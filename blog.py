@@ -14,7 +14,7 @@ from werkzeug.utils import secure_filename
 import requests
 import os
 import subprocess
-from useful_functions import get_popular_projects, get_recommended_projects,delete_project_image
+from useful_functions import get_popular_projects, get_recommended_projects, delete_project_image
 from flask_login import current_user
 from useful_functions import get_project, resize_image
 from analyze_description import analyze_description
@@ -54,8 +54,6 @@ def get_project_comments(project_id):
     comments = sesion.query(Comment).filter_by(project_id=project_id).all()
     sesion.close()
     return comments
-
-
 
 
 @blueprint.route('/register/check', methods=['GET', 'POST'])

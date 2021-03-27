@@ -10,7 +10,8 @@ import user_profile
 import blog
 import db_session
 import ranking_projects
-from useful_functions import get_popular_projects, resize_image, get_recommended_projects, write_new_likes
+from useful_functions import get_popular_projects, resize_image, get_recommended_projects, \
+    write_new_likes
 import datetime
 import schedule
 import threading
@@ -92,4 +93,8 @@ if __name__ == '__main__':
     app.register_blueprint(blog.blueprint, url_prefix='/project')
     app.register_blueprint(user_profile.blueprint, url_prefix='/user')
     app.register_blueprint(ranking_projects.blueprint, url_prefix='/rank-projects')
-    app.run(port=8080, host='127.0.0.1')
+    try:
+        app.run(port=8080, host='127.0.0.1')
+    except IOError:
+        logging.log('local running canceled')
+
